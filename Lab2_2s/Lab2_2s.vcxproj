@@ -140,9 +140,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Lab2_2s.cpp" />
+    <ClCompile Include="Mark.cpp" />
+    <ClCompile Include="Discipline.cpp" />
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Discipline.h" />
+    <ClInclude Include="Group.h" />
+    <ClInclude Include="Mark.h" />
+    <ClInclude Include="Student.h" />
     <ClInclude Include="Teacher.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

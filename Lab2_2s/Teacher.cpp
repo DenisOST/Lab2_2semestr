@@ -20,6 +20,8 @@ Teacher InputTeacher()
 	cin >> Teach.Name;
 	cout << "Введите отчество преподавателя: ";
 	cin >> Teach.Patronymic;
+
+	return Teach;
 }
 
 void OutputTeacher(Teacher Teach)
