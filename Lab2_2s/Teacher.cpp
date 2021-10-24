@@ -26,5 +26,5 @@ Teacher InputTeacher()
 
 void OutputTeacher(Teacher Teach)
 {
-	cout << "Данные преподавателя (ФИО): " << Teach.Surname << " " << Teach.Name << " " << Teach.Patronymic << endl;
+	cout << "ФИО преподавателя: " << Teach.Surname << " " << Teach.Name << " " << Teach.Patronymic << endl;
 }
