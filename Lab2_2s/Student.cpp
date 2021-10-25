@@ -40,6 +40,7 @@ int AddDisciplineToStudent(Student& Student, Discipline& Discipline)
 
 	for (int i = 0; i < 10 && flag == 0; i++) {
 		if (Student.Discipline[i].Name == "") {
+			if (Student.Discipline[i].Name == "")
 			Student.Discipline[i] = Discipline;
 			flag = 1;
 		}
@@ -74,13 +75,15 @@ void OutputStudent(Student Student)
 	cout << "Дисциплины: ";
 	int i = 0;
 	while (Student.Discipline[i].Name != "") {
-		cout << "|" << Student.Discipline[i].Name << "|" << endl;
+		cout << "|" << Student.Discipline[i].Name << "| ";
 		i++;
 	}
+	cout << endl;
 	cout << "Баллы: ";
-	int i = 0;
+	i = 0;
 	while (Student.Mark[i].Number != 0) {
-		cout << "|" << Student.Mark[i].Number << "|" << endl;
+		cout << "|" << Student.Mark[i].Number << "| ";
 		i++;
 	}
+	cout << endl;
 }

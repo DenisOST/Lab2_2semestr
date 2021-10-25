@@ -22,6 +22,17 @@ Discipline InputDiscipline(Teacher Teach)
 	return Discipline;
 }
 
+int AddTeacherToDiscipline(Teacher& Teacher, Discipline& Discipline)
+{
+	int flag = 0;
+
+	if (Discipline.Teacher.Surname == "") {
+		Discipline.Teacher = Teacher;
+	}
+
+	return flag;
+}
+
 void OutputDiscipline(Discipline Discipline)
 {
 	cout << "Название дисциплины: " << Discipline.Name << endl;

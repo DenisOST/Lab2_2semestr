@@ -11,4 +11,6 @@ Discipline Set(string Name);
 
 Discipline InputDiscipline(Teacher Teach);
 
+int AddTeacherToDiscipline(Teacher& Teacher, Discipline& Discipline);
+
 void OutputDiscipline(Discipline D);

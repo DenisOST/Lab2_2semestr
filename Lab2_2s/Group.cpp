@@ -26,7 +26,7 @@ int AddStudentToGroup(Group& Group, Student& Student)
 {
 	int flag = 0;
 
-	for (int i = 0; i < 30; i++) {
+	for (int i = 0; i < 30 && flag == 0; i++) {
 		if (Group.Student[i].Surname == "") {
 			if (Group.Student[i].Name == "") {
 				if (Group.Student[i].Patronymic == "") {
@@ -42,10 +42,10 @@ int AddStudentToGroup(Group& Group, Student& Student)
 
 void OutputGroup(Group Group)
 {
-	cout << "Название дисциплины: " << Group.Name << endl;
-	cout << "Студенты группы: ";
+	cout << "Название группы: " << Group.Name << endl;
+	cout << "Студенты группы: " << endl;
 	int i = 0;
-	while (Group.Student[i].Surname != "") {
+	while (Group.Student[i].Surname != "" && Group.Student[i].Name != "" && Group.Student[i].Patronymic != "") {
 		cout << "|" << Group.Student[i].Surname << " " << Group.Student[i].Name << " " << Group.Student[i].Patronymic << "|" << endl;
 		i++;
 	}
