@@ -73,5 +73,14 @@ void OutputStudent(Student Student)
 	cout << "ФИО студента: " << Student.Surname << " " << Student.Name << " " << Student.Patronymic << endl;
 	cout << "Дисциплины: ";
 	int i = 0;
-	while (Student.Discipline[i].)
+	while (Student.Discipline[i].Name != "") {
+		cout << "|" << Student.Discipline[i].Name << "|" << endl;
+		i++;
+	}
+	cout << "Баллы: ";
+	int i = 0;
+	while (Student.Mark[i].Number != 0) {
+		cout << "|" << Student.Mark[i].Number << "|" << endl;
+		i++;
+	}
 }
