@@ -13,7 +13,7 @@ int main()
 
 	int i;
 
-	Teacher* Teachers = new Teacher[3];
+	Teacher Teachers[3];
 	Teachers[0] = Set("Попова", "Ирина", "Андреевна");
 	Teachers[1] = Set("Иванова", "Елена", "Сергеевна");
 	Teachers[2] = Set("Буянов", "Виталий", "Юрьевич");
@@ -87,4 +87,6 @@ int main()
 
 	OutputGroup(Groups[0]);
 	cout << endl;
+
+	AverageMarkStudent(Groups[0]);
 }
