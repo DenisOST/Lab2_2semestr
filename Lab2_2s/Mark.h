@@ -2,12 +2,20 @@
 
 #include "Teacher.h"
 
-struct Mark {
+class Mark {
 	int Number = 0;
+
+
+public:
+	Mark();
+
+	~Mark();
+
+	int Get();
+
+	void Set(int M);
+
+	void InputMark();
+
+	void OutputMark();
 };
-
-Mark Set(int M);
-
-Mark InputMark();
-
-void OutputMark(Mark M);

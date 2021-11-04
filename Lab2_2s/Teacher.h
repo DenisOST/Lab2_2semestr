@@ -7,14 +7,23 @@
 
 using namespace std;
 
-struct Teacher {
+class Teacher {
 	string Surname = "";
 	string Name = "";
 	string Patronymic = "";
+
+public:
+	Teacher();
+
+	~Teacher();
+
+	string GetSurname();
+	string GetName();
+	string GetPatronymic();
+
+	void Set(string Surname, string Name, string Patronymic);
+
+	void InputTeacher();
+
+	void OutputTeacher();
 };
-
-Teacher Set(string Surname, string Name, string Patronymic);
-
-Teacher InputTeacher();
-
-void OutputTeacher(Teacher Teach);

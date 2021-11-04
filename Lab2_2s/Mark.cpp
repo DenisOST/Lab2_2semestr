@@ -1,24 +1,33 @@
 #include "Mark.h"
 
-Mark Set(int M)
+Mark::Mark()
 {
-	Mark Number;
-	Number.Number = M;
+	Number = 0;
+}
 
+Mark::~Mark()
+{
+
+}
+
+int Mark::Get()
+{
 	return Number;
 }
 
-Mark InputMark()
+void Mark::Set(int M)
 {
-	Mark Number;
-	Number = Set(0);
+	Number = M;
+}
+
+void Mark::InputMark()
+{
+	this->Set(0);
 	cout << "¬ведите балл: ";
-	cin >> Number.Number;
-
-	return Number;
+	cin >> Number;
 }
 
-void OutputMark(Mark M)
+void Mark::OutputMark()
 {
-	cout << "Ѕалл: " << M.Number << endl;
+	cout << "Ѕалл: " << Number << endl;
 }

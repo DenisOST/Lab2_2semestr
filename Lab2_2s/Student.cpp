@@ -55,9 +55,9 @@ int AddMarkToStudent(Student& Student, Discipline& Discipline, Mark& Mark)
 
 	for (int i = 0; i < 10 && flag == 0; i++) {
 		if (Student.Discipline[i].Name == Discipline.Name) {
-			if (Student.Discipline[i].Teacher.Surname == Discipline.Teacher.Surname) {
-				if (Student.Discipline[i].Teacher.Name == Discipline.Teacher.Name) {
-					if (Student.Discipline[i].Teacher.Patronymic == Discipline.Teacher.Patronymic) {
+			if (Student.Discipline[i].teacher.Surname == Discipline.teacher.Surname) {
+				if (Student.Discipline[i].teacher.Name == Discipline.teacher.Name) {
+					if (Student.Discipline[i].teacher.Patronymic == Discipline.teacher.Patronymic) {
 						Student.Mark[i] = Mark;
 						flag = 1;
 					}
