@@ -27,11 +27,11 @@ string Teacher::GetPatronymic()
 	return Patronymic;
 }
 
-void Teacher::Set(string Surname, string Name, string Patronymic)
+void Teacher::Set(string surname, string name, string patronymic)
 {
-	Surname = Surname;
-	Name = Name;
-	Patronymic = Patronymic;
+	Surname = surname;
+	Name = name;
+	Patronymic = patronymic;
 }
 
 void Teacher::InputTeacher()

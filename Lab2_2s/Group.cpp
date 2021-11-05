@@ -1,39 +1,64 @@
 #include "Group.h"
 
-Group SetGroup(string Name)
+Group::Group()
 {
-	Group Group;
-	Group.Name = Name;
-	Student Student[30];
+	Name = "";
 	for (int i = 0; i < 30; i++) {
-		Group.Student[i] = SetStudent("", "", "");
+		student[i].SetStudent("", "", "");
 	}
-	Group.Quantity = 0;
-
-	return Group;
 }
 
-Group InputGroup()
+Group::~Group()
 {
-	Group Group;
-	Group = SetGroup("");
-	cout << "Введите название группы: ";
-	cin >> Group.Name;
 
-	return Group;
 }
 
-int AddStudentToGroup(Group& Group, Student& Student)
+string Group::Get()
+{
+	return Name;
+}
+
+Student Group::GetStudent(int Num)
+{
+	Student s;
+	if (Num >= 0 && Num < 10)
+		s = student[Num];
+
+	return s;
+}
+
+int Group::GetQuantity()
+{
+	return Quantity;
+}
+
+void Group::SetGroup(string name)
+{
+	Name = name;
+	for (int i = 0; i < 30; i++) {
+		student[i].SetStudent("", "", "");
+	}
+	Quantity = 0;
+}
+
+void Group::InputGroup()
+{
+	this->SetGroup("");
+	cout << "Введите название группы: ";
+	cin >> Name;
+}
+
+int Group::AddStudentToGroup(Student Student)
 {
 	int flag = 0;
 
 	for (int i = 0; i < 30 && flag == 0; i++) {
-		if (Group.Student[i].Surname == "") {
-			if (Group.Student[i].Name == "") {
-				if (Group.Student[i].Patronymic == "") {
-					Group.Student[i] = Student;
+		if (student[i].GetSurname() == "") {
+			if (student[i].GetName() == "") {
+				if (student[i].GetPatronymic() == "") {
+					student[i] = Student;
 					flag = 1;
-					Group.Quantity++;
+					Quantity++;
 				}
 			}
 		}
@@ -42,29 +67,29 @@ int AddStudentToGroup(Group& Group, Student& Student)
 	return flag;
 }
 
-void OutputGroup(Group Group)
+void Group::OutputGroup()
 {
-	cout << "Название группы: " << Group.Name << endl;
+	cout << "Название группы: " << Name << endl;
 	cout << "Студенты группы: " << endl;
 	int i = 0;
-	while (Group.Student[i].Surname != "" && Group.Student[i].Name != "" && Group.Student[i].Patronymic != "") {
-		cout << i + 1 << ". " << Group.Student[i].Surname << " " << Group.Student[i].Name << " " << Group.Student[i].Patronymic << endl;
+	while (student[i].GetSurname() != "" && student[i].GetSurname() != "" && student[i].GetPatronymic() != "") {
+		cout << i + 1 << ". " << student[i].GetSurname() << " " << student[i].GetSurname() << " " << student[i].GetPatronymic() << endl;
 		i++;
 	}
 }
 
-int AverageMarkStudent(Group& Group)
+int Group::AverageMarkStudent()
 {
-	OutputGroup(Group);
+	OutputGroup();
 	int Nomer,
 		QuantityMark = 0,
 		QuantitySum = 0,
 		AverageMark = 0;
 	cout << "Выберите студента для подсчёта среднего балла (введите его номер): ";
 	cin >> Nomer;
-	if (Nomer > 0 && Nomer <= Group.Quantity) {
-		for (int i = 0; i < 10 && Group.Student[Nomer - 1].Mark[i].Number != 0; i++) {
-			QuantitySum = QuantitySum + Group.Student[Nomer - 1].Mark[i].Number;
+	if (Nomer > 0 && Nomer <= Quantity) {
+		for (int i = 0; i < 10 && student[Nomer - 1].GetMark(i).Get() != 0; i++) {
+			QuantitySum = QuantitySum + student[Nomer - 1].GetMark(i).Get();
 			QuantityMark++;
 		}
 		AverageMark = QuantitySum / QuantityMark;

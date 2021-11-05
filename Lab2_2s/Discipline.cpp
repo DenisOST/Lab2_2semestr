@@ -3,6 +3,7 @@
 Discipline::Discipline()
 {
 	Name = "";
+	teacher.Set("", "", "");
 }
 
 Discipline::~Discipline()
@@ -15,9 +16,14 @@ string Discipline::Get()
 	return Name;
 }
 
-void Discipline::Set(string Name)
+Teacher Discipline::GetTeacher()
 {
-	Name = Name;
+	return teacher;
+}
+
+void Discipline::Set(string name)
+{
+	Name = name;
 	teacher.Set("", "", "");
 }
 
@@ -41,7 +47,7 @@ bool Discipline::AddTeacherToDiscipline(Teacher Teacher)
 	return flag;
 }
 
-void Discipline::OutputDiscipline(Discipline Discipline)
+void Discipline::OutputDiscipline()
 {
 	cout << "Название дисциплины: " << Name << endl;
 	teacher.OutputTeacher();

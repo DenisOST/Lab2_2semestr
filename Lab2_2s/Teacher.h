@@ -21,7 +21,7 @@ public:
 	string GetName();
 	string GetPatronymic();
 
-	void Set(string Surname, string Name, string Patronymic);
+	void Set(string surname, string name, string patronymic);
 
 	void InputTeacher();
 

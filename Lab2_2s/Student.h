@@ -4,20 +4,32 @@
 #include "Mark.h"
 #include "Discipline.h"
 
-struct Student {
+class Student {
 	string Surname = "";
 	string Name = "";
 	string Patronymic = "";
-	Mark Mark[10];
-	Discipline Discipline[10];
+	Mark mark[10];
+	Discipline discipline[10];
+
+public:
+	Student();
+
+	~Student();
+
+	string GetSurname();
+	string GetName();
+	string GetPatronymic();
+	Mark GetMark(int Num);
+	Discipline GetDiscipline(int Num);
+
+	void SetStudent(string surname, string same, string satronymic);
+
+	void InputStudent(Mark Mark[10], Discipline Discipline[10]);
+
+	int AddDisciplineToStudent(Discipline Discipline);
+
+	int AddMarkToStudent(Discipline Discipline, Mark Mark);
+
+	void OutputStudent();
 };
 
-Student SetStudent(string Surname, string Name, string Patronymic);
-
-Student InputStudent(Mark Mark[10], Discipline Discipline[10]);
-
-int AddDisciplineToStudent(Student& Student, Discipline& Discipline);
-
-int AddMarkToStudent(Student& Student, Discipline& Discipline, Mark& Mark);
-
-void OutputStudent(Student Student);

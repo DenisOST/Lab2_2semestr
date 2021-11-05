@@ -12,12 +12,13 @@ public:
 	~Discipline();
 
 	string Get();
+	Teacher GetTeacher();
 
-	void Set(string Name);
+	void Set(string name);
 
 	void InputDiscipline(Teacher Teacher);
 
 	bool AddTeacherToDiscipline(Teacher Teacher);
 
-	void OutputDiscipline(Discipline D);
+	void OutputDiscipline();
 };

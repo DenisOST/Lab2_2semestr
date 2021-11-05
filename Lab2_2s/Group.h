@@ -3,18 +3,27 @@
 #include "Teacher.h"
 #include "Student.h"
 
-struct Group {
+class Group {
 	string Name = "";
-	Student Student[30];
+	Student student[30];
 	int Quantity;
+
+public:
+	Group();
+
+	~Group();
+
+	string Get();
+	Student GetStudent(int Num);
+	int GetQuantity();
+
+	void SetGroup(string Name);
+
+	void InputGroup();
+
+	int AddStudentToGroup(Student Student);
+
+	void OutputGroup();
+
+	int AverageMarkStudent();
 };
-
-Group SetGroup(string Name);
-
-Group InputGroup();
-
-int AddStudentToGroup(Group& Group, Student& Student);
-
-void OutputGroup(Group Group);
-
-int AverageMarkStudent(Group& Group);
