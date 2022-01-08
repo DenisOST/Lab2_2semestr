@@ -57,18 +57,16 @@ void Student::SetStudent(string surname, string name, string patronymic)
 	Name = name;
 	Patronymic = patronymic;
 
-	Mark Mark[10];
 	for (int i = 0; i < 10; i++) {
 		mark[i].Set(0);
 	}
 
-	Discipline Discipline[10];
 	for (int i = 0; i < 10; i++) {
 		discipline[i].Set("");
 	}
 }
 
-void Student::InputStudent(Mark Mark[10], Discipline Discipline[10])
+void Student::InputStudent()
 {
 	this->SetStudent("", "", "");
 	cout << "Введите фамилию студента: ";
@@ -84,7 +82,7 @@ int Student::AddDisciplineToStudent(Discipline Discipline)
 	int flag = 0;
 
 	for (int i = 0; i < 10 && flag == 0; i++) {
-		if (discipline[i].Get() == "") {
+		if (discipline[i].GetName() == "") {
 			discipline[i] = Discipline;
 			flag = 1;
 		}
@@ -98,7 +96,7 @@ int Student::AddMarkToStudent(Discipline Discipline, Mark Mark)
 	int flag = 0;
 
 	for (int i = 0; i < 10 && flag == 0; i++) {
-		if (discipline[i].Get() == Discipline.Get()) {
+		if (discipline[i].GetName() == Discipline.GetName()) {
 			if (discipline[i].GetTeacher().GetSurname() == Discipline.GetTeacher().GetSurname()) {
 				if (discipline[i].GetTeacher().GetName() == Discipline.GetTeacher().GetName()) {
 					if (discipline[i].GetTeacher().GetPatronymic() == Discipline.GetTeacher().GetPatronymic()) {
@@ -118,8 +116,8 @@ void Student::OutputStudent()
 	cout << "ФИО студента: " << Surname << " " << Name << " " << Patronymic << endl;
 	cout << "Дисциплины: ";
 	int i = 0;
-	while (discipline[i].Get() != "") {
-		cout << "|" << discipline[i].Get() << "| ";
+	while (discipline[i].GetName() != "") {
+		cout << "|" << discipline[i].GetName() << "| ";
 		i++;
 	}
 	cout << endl;

@@ -24,12 +24,14 @@ public:
 
 	void SetStudent(string surname, string same, string satronymic);
 
-	void InputStudent(Mark Mark[10], Discipline Discipline[10]);
+	void InputStudent();
 
 	int AddDisciplineToStudent(Discipline Discipline);
 
 	int AddMarkToStudent(Discipline Discipline, Mark Mark);
 
 	void OutputStudent();
+
+	friend void FullNameExchange(Student& student, Teacher& teacher);
 };
 

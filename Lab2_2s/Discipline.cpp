@@ -11,7 +11,7 @@ Discipline::~Discipline()
 
 }
 
-string Discipline::Get()
+string Discipline::GetName()
 {
 	return Name;
 }

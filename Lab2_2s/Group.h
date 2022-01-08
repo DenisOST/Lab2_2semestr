@@ -13,7 +13,7 @@ public:
 
 	~Group();
 
-	string Get();
+	string GetName();
 	Student GetStudent(int Num);
 	int GetQuantity();
 

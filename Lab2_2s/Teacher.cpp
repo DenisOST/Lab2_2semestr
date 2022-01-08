@@ -49,3 +49,10 @@ void Teacher::OutputTeacher()
 {
 	cout << "ФИО преподавателя: " << Surname << " " << Name << " " << Patronymic << endl;
 }
+
+void Teacher::ShowingWorkingWithString()
+{
+	Surname = Surname + "Демонстрация";
+	Name = Name + "работы со";
+	Patronymic = Patronymic + "строками :)";
+}

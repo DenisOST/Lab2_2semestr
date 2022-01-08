@@ -5,7 +5,9 @@
 class Mark {
 	int Number = 0;
 
-
+	static Mark* last_mark; // Адрес последнего элемента списка
+	Mark* prev; // На предыдущий элемент списка
+	Mark* next; // На следующий элемент списка
 public:
 	Mark();
 
@@ -13,9 +15,19 @@ public:
 
 	int Get();
 
+	void GetMarkLink(int& number);
+	void GetMarkPointer(int* number);
+
 	void Set(int M);
 
 	void InputMark();
 
 	void OutputMark();
+
+	void Add();
+	static void Reprint();
+
+	friend Mark operator+(const Mark &mark, int number);
+	Mark& operator++();
+	Mark operator++ (int);
 };

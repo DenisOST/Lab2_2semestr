@@ -6,6 +6,26 @@
 #include "Mark.h"
 #include "Windows.h"
 
+// Инициализация статическоко компанента (указателя):
+Mark* Mark::last_mark = NULL;
+
+void FullNameExchange(Student &student, Teacher &teacher)
+{
+	string Name, Surname, Patronymic;
+
+	Name = teacher.Name;
+	teacher.Name = student.Name;
+	student.Name = Name;
+
+	Surname = teacher.Surname;
+	teacher.Surname = student.Surname;
+	student.Surname = Surname;
+
+	Patronymic = teacher.Patronymic;
+	teacher.Patronymic = student.Patronymic;
+	student.Patronymic = Patronymic;
+}
+
 int main()
 {
 	SetConsoleCP(1251);
@@ -14,27 +34,22 @@ int main()
 	int i;
 
 	Teacher Teachers[3];
-	Teacher* teachers = new Teacher; //Применение оператора new
 	Teachers[0].Set("Попова", "Ирина", "Андреевна");
 	Teachers[1].Set("Иванова", "Елена", "Сергеевна");
 	Teachers[2].Set("Буянов", "Виталий", "Юрьевич");
-	(*teachers).Set("Жукин", "Алексей", "Валерьевич"); //Использование (*a)
 
-	Discipline* Disciplines = new Discipline[3]; //Динамический массив
-	Discipline* disciplines = new Discipline;
+	Discipline Disciplines[3];
 	Disciplines[0].Set("Программирование");
 	Disciplines[1].Set("Математика");
 	Disciplines[2].Set("Экономика");
-	disciplines->Set("Философия"); //Использование ->.
 
 	for (i = 0; i < 3; i++) {
 		Disciplines[i].AddTeacherToDiscipline(Teachers[i]);
 	}
-	(*disciplines).AddTeacherToDiscipline(*teachers);
 
-	Mark* Marks1 = new Mark[3]; //Динамический массив
-	Mark* Marks2 = new Mark[3]; //Динамический массив
-	Mark* Marks3 = new Mark[3]; //Динамический массив
+	Mark Marks1[3];
+	Mark Marks2[3];
+	Mark Marks3[3];
 
 	Marks1[0].Set(60);
 	Marks1[1].Set(80);
@@ -46,7 +61,7 @@ int main()
 	Marks3[1].Set(30);
 	Marks3[2].Set(80);
 
-	Student* Students = new Student[3]; //Динамический массив
+	Student Students[3];
 	Students[0].SetStudent("Андреев", "Сергей", "Васильевич");
 	Students[1].SetStudent("Авдеев", "Антон", "Александрович");
 	Students[2].SetStudent("Сергеев", "Юрий", "Владимирович");
@@ -80,15 +95,11 @@ int main()
 		Teachers[i].OutputTeacher();
 		cout << endl;
 	}
-	teachers->OutputTeacher();
-	cout << endl;
 
 	for (i = 0; i < 3; i++) {
 		Disciplines[i].OutputDiscipline();
 		cout << endl;
 	}
-	(*disciplines).OutputDiscipline();
-	cout << endl;
 
 	for (i = 0; i < 3; i++) {
 		Students[i].OutputStudent();
@@ -101,31 +112,67 @@ int main()
 	Groups.AverageMarkStudent();
 	cout << endl;
 
-	string Surname, Name, Patronymic;
-	Mark M[10];
-	Discipline D[10];
-	Teacher T;
-	for (int i = 0; i < 3; i++) {
-		Surname = "Мурин" + to_string(i);
-		Name = "Сергей" + to_string(i);
-		Patronymic = "Сергеевич" + to_string(i);
-		T.Set(Surname, Name, Patronymic);
-		M[i].Set(40 + i*10);
-		D[i].Set("Дисциплина" + to_string(i));
-		D[i].AddTeacherToDiscipline(T);
-	}
-	Student* S[3]; //Массив динамических переменных
-	for (int i = 0; i < 3; i++) {
-		S[i] = new Student;
-		S[i]->SetStudent("Калинина" + to_string(i), "Мария" + to_string(i), "Ивановна" + to_string(i));
-		S[i]->AddDisciplineToStudent(D[i]);
-		S[i]->AddMarkToStudent(D[i], M[i]);
-	}
-	for (int i = 0; i < 3; i++) {
-		S[i]->OutputStudent();
-	}
 
-	delete disciplines; //применение операторов delete, delete[];
-	delete teachers;
-	delete[] Students;
+
+	cout << "1) Продемонстрировать возврат значения из метода через указатель (*) и через ссылку (&)" << endl;
+	int link;
+	int& Link = link;
+	int* Pointer = new int;
+	Marks1[0].GetMarkLink(Link);
+	Marks1[1].GetMarkPointer(Pointer);
+	cout <<"Ссылка: " << Link << endl;
+	cout <<"Указатель: " << *Pointer << endl;
+	cout << endl;
+
+	cout << "2) Продемонстрировать разумное использование оператора this" << endl;
+	// Формирование объектов класса Mark:
+	Mark A;
+	Mark B;
+	Mark C;
+	Mark D;
+	A.Set(10);
+	B.Set(20);
+	C.Set(30);
+	D.Set(40);
+	// Вызов статической компанентной функции:
+	Mark::Reprint();
+	// Включение созданных компанентов в двусвязанный список:
+	A.Add(); B.Add(); C.Add(); D.Add();
+
+	// Печать в обратном порядке значений элементов списка:
+	Mark::Reprint();
+	cout << endl << endl;
+	
+	cout << "3) Придумать и реализовать разумное использование дружественной функции" << endl;
+	cout << "ФИО до обмена:" << endl;
+	cout << "Преподаватель: "; Teachers[0].OutputTeacher();
+	cout << "Студент: "; Students[0].OutputStudent();
+	cout << endl;
+	FullNameExchange(Students[0], Teachers[0]);
+	cout << "ФИО после обмена:" << endl;
+	cout << "Преподаватель: "; Teachers[0].OutputTeacher();
+	cout << "Студент: "; Students[0].OutputStudent();
+	cout << endl;
+
+	cout << "4) Выполнить перегрузку операторов '+', '++' (два варианта, префиксный и постфиксный)" << endl;
+	Mark MarkPlus;
+	MarkPlus.Set(50);
+	MarkPlus.OutputMark();
+	cout << "Оператор + (прибавим 10 баллов):" << endl;
+	MarkPlus = MarkPlus + 10;
+	MarkPlus.OutputMark();
+	cout << "Оператор ++ префиксный:" << endl;
+	++MarkPlus;
+	MarkPlus.OutputMark();
+	cout << "Оператор ++ постфиксный:" << endl;
+	MarkPlus++;
+	MarkPlus.OutputMark();
+	cout << endl;
+
+	cout << "5) Заменить массивы char на std::string, продемонстрировать работу с этим классом" << endl;
+	Teacher TeacherString;
+	TeacherString.Set("", "", "");
+	TeacherString.ShowingWorkingWithString();
+	TeacherString.OutputTeacher();
+	cout << endl;
 }

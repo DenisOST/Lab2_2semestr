@@ -11,7 +11,7 @@ public:
 
 	~Discipline();
 
-	string Get();
+	string GetName();
 	Teacher GetTeacher();
 
 	void Set(string name);

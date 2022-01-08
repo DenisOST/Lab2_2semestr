@@ -7,6 +7,8 @@
 
 using namespace std;
 
+class Student;
+
 class Teacher {
 	string Surname = "";
 	string Name = "";
@@ -26,4 +28,8 @@ public:
 	void InputTeacher();
 
 	void OutputTeacher();
+
+	friend void FullNameExchange(Student& student, Teacher& teacher);
+
+	void ShowingWorkingWithString();
 };

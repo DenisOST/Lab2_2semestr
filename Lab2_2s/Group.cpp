@@ -13,7 +13,7 @@ Group::~Group()
 
 }
 
-string Group::Get()
+string Group::GetName()
 {
 	return Name;
 }
@@ -96,7 +96,7 @@ int Group::AverageMarkStudent()
 		cout << "Средний балл студента: " << AverageMark << endl;
 	}
 	else
-		cout << "Неправильно введён номер!";
+		cout << "Неправильно введён номер!" << endl;
 
 	return AverageMark;
 }
