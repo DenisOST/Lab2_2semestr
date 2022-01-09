@@ -1,47 +1,89 @@
 #include "Student.h"
 
-Student SetStudent(string Surname, string Name, string Patronymic)
+Student::Student()
 {
-	Student Student;
-	Student.Surname = Surname;
-	Student.Name = Name;
-	Student.Patronymic = Patronymic;
-
-	Mark Mark[10];
+	Surname = "";
+	Name = "";
+	Patronymic = "";
 	for (int i = 0; i < 10; i++) {
-		Student.Mark[i] = Set(0);
+		mark[i].Set(0);
 	}
-
-	Discipline Discipline[10];
 	for (int i = 0; i < 10; i++) {
-		Student.Discipline[i] = Set("");
+		discipline[i].Set("");
 	}
-
-	return Student;
 }
 
-Student InputStudent(Mark Mark[10], Discipline Discipline[10])
+Student::~Student()
 {
-	Student Student;
-	Student = SetStudent("", "", "");
+
+}
+
+string Student::GetSurname()
+{
+	return Surname;
+}
+
+string Student::GetName()
+{
+	return Name;
+}
+
+string Student::GetPatronymic()
+{
+	return Patronymic;
+}
+
+Mark Student::GetMark(int Num)
+{
+	Mark m;
+	if (Num >= 0 && Num < 10)
+		m = mark[Num];
+
+	return m;
+}
+
+Discipline Student::GetDiscipline(int Num)
+{
+	Discipline d;
+	if (Num >= 0 && Num < 10)
+		d = discipline[Num];
+
+	return d;
+}
+
+void Student::SetStudent(string surname, string name, string patronymic)
+{
+	Surname = surname;
+	Name = name;
+	Patronymic = patronymic;
+
+	for (int i = 0; i < 10; i++) {
+		mark[i].Set(0);
+	}
+
+	for (int i = 0; i < 10; i++) {
+		discipline[i].Set("");
+	}
+}
+
+void Student::InputStudent()
+{
+	this->SetStudent("", "", "");
 	cout << "Введите фамилию студента: ";
-	cin >> Student.Surname;
+	cin >> Surname;
 	cout << "Введите имя студента: ";
-	cin >> Student.Name;
+	cin >> Name;
 	cout << "Введите отчество студента: ";
-	cin >> Student.Patronymic;
-
-	return Student;
+	cin >> Patronymic;
 }
 
-int AddDisciplineToStudent(Student& Student, Discipline& Discipline)
+int Student::AddDisciplineToStudent(Discipline Discipline)
 {
 	int flag = 0;
 
 	for (int i = 0; i < 10 && flag == 0; i++) {
-		if (Student.Discipline[i].Name == "") {
-			if (Student.Discipline[i].Name == "")
-			Student.Discipline[i] = Discipline;
+		if (discipline[i].GetName() == "") {
+			discipline[i] = Discipline;
 			flag = 1;
 		}
 	}
@@ -49,16 +91,16 @@ int AddDisciplineToStudent(Student& Student, Discipline& Discipline)
 	return flag;
 }
 
-int AddMarkToStudent(Student& Student, Discipline& Discipline, Mark& Mark)
+int Student::AddMarkToStudent(Discipline Discipline, Mark Mark)
 {
 	int flag = 0;
 
 	for (int i = 0; i < 10 && flag == 0; i++) {
-		if (Student.Discipline[i].Name == Discipline.Name) {
-			if (Student.Discipline[i].Teacher.Surname == Discipline.Teacher.Surname) {
-				if (Student.Discipline[i].Teacher.Name == Discipline.Teacher.Name) {
-					if (Student.Discipline[i].Teacher.Patronymic == Discipline.Teacher.Patronymic) {
-						Student.Mark[i] = Mark;
+		if (discipline[i].GetName() == Discipline.GetName()) {
+			if (discipline[i].GetTeacher().GetSurname() == Discipline.GetTeacher().GetSurname()) {
+				if (discipline[i].GetTeacher().GetName() == Discipline.GetTeacher().GetName()) {
+					if (discipline[i].GetTeacher().GetPatronymic() == Discipline.GetTeacher().GetPatronymic()) {
+						mark[i] = Mark;
 						flag = 1;
 					}
 				}
@@ -69,20 +111,20 @@ int AddMarkToStudent(Student& Student, Discipline& Discipline, Mark& Mark)
 	return flag;
 }
 
-void OutputStudent(Student Student)
+void Student::OutputStudent()
 {
-	cout << "ФИО студента: " << Student.Surname << " " << Student.Name << " " << Student.Patronymic << endl;
+	cout << "ФИО студента: " << Surname << " " << Name << " " << Patronymic << endl;
 	cout << "Дисциплины: ";
 	int i = 0;
-	while (Student.Discipline[i].Name != "") {
-		cout << "|" << Student.Discipline[i].Name << "| ";
+	while (discipline[i].GetName() != "") {
+		cout << "|" << discipline[i].GetName() << "| ";
 		i++;
 	}
 	cout << endl;
 	cout << "Баллы: ";
 	i = 0;
-	while (Student.Mark[i].Number != 0) {
-		cout << "|" << Student.Mark[i].Number << "| ";
+	while (mark[i].Get() != 0) {
+		cout << "|" << mark[i].Get() << "| ";
 		i++;
 	}
 	cout << endl;
