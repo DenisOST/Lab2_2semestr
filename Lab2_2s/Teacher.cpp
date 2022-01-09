@@ -1,30 +1,58 @@
 #include "Teacher.h"
 
-Teacher Set(string Surname, string Name, string Patronymic)
+Teacher::Teacher()
 {
-	Teacher Teach;
-	Teach.Surname = Surname;
-	Teach.Name = Name;
-	Teach.Patronymic = Patronymic;
-
-	return Teach;
+	Surname = "";
+	Name = "";
+	Patronymic = "";
 }
 
-Teacher InputTeacher()
+Teacher::~Teacher()
 {
-	Teacher Teach;
-	Teach = Set("", "", "");
+
+}
+
+string Teacher::GetSurname()
+{
+	return Surname;
+}
+
+string Teacher::GetName()
+{
+	return Name;
+}
+
+string Teacher::GetPatronymic()
+{
+	return Patronymic;
+}
+
+void Teacher::Set(string surname, string name, string patronymic)
+{
+	Surname = surname;
+	Name = name;
+	Patronymic = patronymic;
+}
+
+void Teacher::InputTeacher()
+{
+	this->Set("", "", "");
 	cout << "Введите фамилию преподавателя: ";
-	cin >> Teach.Surname;
+	cin >> Surname;
 	cout << "Введите имя преподавателя: ";
-	cin >> Teach.Name;
+	cin >> Name;
 	cout << "Введите отчество преподавателя: ";
-	cin >> Teach.Patronymic;
-
-	return Teach;
+	cin >> Patronymic;
 }
 
-void OutputTeacher(Teacher Teach)
+void Teacher::OutputTeacher()
 {
-	cout << "ФИО преподавателя: " << Teach.Surname << " " << Teach.Name << " " << Teach.Patronymic << endl;
+	cout << "ФИО преподавателя: " << Surname << " " << Name << " " << Patronymic << endl;
+}
+
+void Teacher::ShowingWorkingWithString()
+{
+	Surname = Surname + "Демонстрация";
+	Name = Name + "работы со";
+	Patronymic = Patronymic + "строками :)";
 }
