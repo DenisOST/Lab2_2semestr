@@ -77,6 +77,12 @@ void Mark::Reprint(void)
 	}
 }
 
+// Создание нового списка
+void Mark::NewList()
+{
+	last_mark = NULL;
+}
+
 Mark operator+(const Mark& mark, int number)
 {
 	if (mark.Number + number > 100)

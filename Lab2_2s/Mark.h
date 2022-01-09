@@ -26,6 +26,7 @@ public:
 
 	void Add();
 	static void Reprint();
+	static void NewList();
 
 	friend Mark operator+(const Mark &mark, int number);
 	Mark& operator++();
