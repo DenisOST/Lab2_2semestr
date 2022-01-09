@@ -90,7 +90,7 @@ int main()
 	for (i = 0; i < 3; i++) {
 		Groups.AddStudentToGroup(Students[i]);
 	}
-
+	/*
 	for (i = 0; i < 3; i++) {
 		Teachers[i].OutputTeacher();
 		cout << endl;
@@ -124,7 +124,7 @@ int main()
 	cout <<"Указатель: " << *Pointer << endl;
 	cout << endl;
 	
-	/*
+	
 	cout << "2) Продемонстрировать разумное использование оператора this" << endl;
 	// Формирование объектов класса Mark:
 	Mark A;
@@ -143,7 +143,6 @@ int main()
 	// Печать в обратном порядке значений элементов списка:
 	Mark::Reprint();
 	cout << endl << endl;
-	*/
 	
 	cout << "3) Придумать и реализовать разумное использование дружественной функции" << endl;
 	cout << "ФИО до обмена:" << endl;
@@ -177,6 +176,7 @@ int main()
 	TeacherString.ShowingWorkingWithString();
 	TeacherString.OutputTeacher();
 	cout << endl;
+	*/
 
 	cout << "Модифицировать ваши проекты на С++, C# и Java путем добавления в один из классов как минимум одного статического поля и одного статического метода." << endl;
 	// Формирование объектов класса Mark:
