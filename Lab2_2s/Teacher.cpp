@@ -10,6 +10,8 @@ Teacher::Teacher()
 Teacher::Teacher(string surname)
 {
 	Surname = surname;
+	Name = "";
+	Patronymic = "";
 }
 
 Teacher::Teacher(string surname, string name, string patronymic)
