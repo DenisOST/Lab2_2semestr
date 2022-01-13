@@ -16,6 +16,8 @@ class Teacher {
 
 public:
 	Teacher();
+	Teacher(string surname);
+	Teacher(string surname, string name, string patronymic);
 
 	~Teacher();
 
@@ -24,6 +26,9 @@ public:
 	string GetPatronymic();
 
 	void Set(string surname, string name, string patronymic);
+	void SetSurname(string surname);
+	void SetName(string name);
+	void SetPatronymic(string patronymic);
 
 	void InputTeacher();
 

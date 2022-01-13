@@ -13,6 +13,8 @@ class Student {
 
 public:
 	Student();
+	Student(string surname);
+	Student(string surname, string name, string patronymic, Mark m[], int M, Discipline d[], int D);
 
 	~Student();
 
@@ -22,7 +24,12 @@ public:
 	Mark GetMark(int Num);
 	Discipline GetDiscipline(int Num);
 
-	void SetStudent(string surname, string same, string satronymic);
+	void SetStudent(string surname, string name, string patronymic);
+	void SetSurname(string surname);
+	void SetName(string name);
+	void SetPatronymic(string patronymic);
+	void SetMark(Mark m[]);
+	void SetDiscipline(Discipline d[]);
 
 	void InputStudent();
 

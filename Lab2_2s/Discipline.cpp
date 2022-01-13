@@ -3,7 +3,22 @@
 Discipline::Discipline()
 {
 	Name = "";
-	teacher.Set("", "", "");
+	teacher = new Teacher();
+	teacher->Set("", "", "");
+}
+
+Discipline::Discipline(string name)
+{
+	Name = name;
+	teacher = new Teacher();
+	teacher->Set("", "", "");
+}
+
+Discipline::Discipline(string name, Teacher t)
+{
+	Name = name;
+	teacher = new Teacher();
+	*teacher = t;
 }
 
 Discipline::~Discipline()
@@ -18,29 +33,39 @@ string Discipline::GetName()
 
 Teacher Discipline::GetTeacher()
 {
-	return teacher;
+	return *teacher;
 }
 
-void Discipline::Set(string name)
+void Discipline::Set(string name, Teacher t)
 {
 	Name = name;
-	teacher.Set("", "", "");
+	*teacher = t;
+}
+
+void Discipline::SetName(string name)
+{
+	Name = name;
+}
+
+void Discipline::SetTeacher(Teacher t)
+{
+	*teacher = t;
 }
 
 void Discipline::InputDiscipline(Teacher Teacher)
 {
-	this->Set("");
+	this->SetName("");
 	cout << "Введите название дисциплины: ";
 	cin >> Name;
-	teacher = Teacher;
+	*teacher = Teacher;
 }
 
 bool Discipline::AddTeacherToDiscipline(Teacher Teacher)
 {
 	bool flag = 0;
 
-	if (teacher.GetSurname() == "") {
-		teacher = Teacher;
+	if (teacher->GetSurname() == "") {
+		*teacher = Teacher;
 		flag = 1;
 	}
 
@@ -50,5 +75,5 @@ bool Discipline::AddTeacherToDiscipline(Teacher Teacher)
 void Discipline::OutputDiscipline()
 {
 	cout << "Название дисциплины: " << Name << endl;
-	teacher.OutputTeacher();
+	teacher->OutputTeacher();
 }

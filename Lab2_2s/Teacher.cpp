@@ -7,6 +7,18 @@ Teacher::Teacher()
 	Patronymic = "";
 }
 
+Teacher::Teacher(string surname)
+{
+	Surname = surname;
+}
+
+Teacher::Teacher(string surname, string name, string patronymic)
+{
+	Surname = surname;
+	Name = name;
+	Patronymic = patronymic;
+}
+
 Teacher::~Teacher()
 {
 
@@ -31,6 +43,21 @@ void Teacher::Set(string surname, string name, string patronymic)
 {
 	Surname = surname;
 	Name = name;
+	Patronymic = patronymic;
+}
+
+void Teacher::SetSurname(string surname)
+{
+	Surname = surname;
+}
+
+void Teacher::SetName(string name)
+{
+	Name = name;
+}
+
+void Teacher::SetPatronymic(string patronymic)
+{
 	Patronymic = patronymic;
 }
 

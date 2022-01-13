@@ -5,11 +5,38 @@ Student::Student()
 	Surname = "";
 	Name = "";
 	Patronymic = "";
+	Discipline d;
 	for (int i = 0; i < 10; i++) {
 		mark[i].Set(0);
 	}
 	for (int i = 0; i < 10; i++) {
-		discipline[i].Set("");
+		discipline[i].SetName("");
+	}
+}
+
+Student::Student(string surname)
+{
+	Surname = surname;
+	Name = "";
+	Patronymic = "";
+	for (int i = 0; i < 10; i++) {
+		mark[i].Set(0);
+	}
+	for (int i = 0; i < 10; i++) {
+		discipline[i].SetName("");
+	}
+}
+
+Student::Student(string surname, string name, string patronymic, Mark m[], int M, Discipline d[], int D)
+{
+	Surname = surname;
+	Name = name;
+	Patronymic = patronymic;
+	for (int i = 0; i < 10 && i < M; i++) {
+		mark[i] = m[i];
+	}
+	for (int i = 0; i < 10 && i < D; i++) {
+		discipline[i] = d[i];
 	}
 }
 
@@ -62,9 +89,39 @@ void Student::SetStudent(string surname, string name, string patronymic)
 	}
 
 	for (int i = 0; i < 10; i++) {
-		discipline[i].Set("");
+		discipline[i].SetName("");
 	}
 }
+
+void Student::SetSurname(string surname)
+{
+	Surname = surname;
+}
+
+void Student::SetName(string name)
+{
+	Name = name;
+}
+
+void Student::SetPatronymic(string patronymic)
+{
+	Patronymic = patronymic;
+}
+
+void Student::SetMark(Mark m[])
+{
+	for (int i = 0; i < 10; i++) {
+		mark[i] = m[i];
+	}
+}
+
+void Student::SetDiscipline(Discipline d[])
+{
+	for (int i = 0; i < 10; i++) {
+		discipline[i] = d[i];
+	}
+}
+
 
 void Student::InputStudent()
 {

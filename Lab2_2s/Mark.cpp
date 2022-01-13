@@ -5,6 +5,11 @@ Mark::Mark()
 	Number = 0;
 }
 
+Mark::Mark(int M)
+{
+	Number = M;
+}
+
 Mark::~Mark()
 {
 

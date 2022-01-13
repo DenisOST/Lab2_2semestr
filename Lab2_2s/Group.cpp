@@ -7,6 +7,36 @@ Group::Group()
 		student[i].SetStudent("", "", "");
 	}
 }
+Group::Group(string name)
+{
+	Name = name;
+	for (int i = 0; i < 30; i++) {
+		student[i].SetStudent("", "", "");
+	}
+}
+
+Group::Group(string name, Student s[], int q)
+{
+	Name = name;
+	Quantity = 0;
+	for (int i = 0; i < 30 && i < q; i++) {
+		student[i] = s[i];
+		Quantity++;
+	}
+}
+
+Group::Group(const Group& group)
+{
+	Name = group.Name;
+	Quantity = group.Quantity;
+	if (group.Quantity > 0)
+	{
+		for (int i = 0; i < group.Quantity; i++)
+		{
+			student[i] = group.student[i];
+		}
+	}
+}
 
 Group::~Group()
 {
@@ -32,13 +62,26 @@ int Group::GetQuantity()
 	return Quantity;
 }
 
+void Group::Set(string name, Student s[], int q)
+{
+	Name = name;
+	for (int i = 0; i < 30 && i < q; i++) {
+		student[i] = s[i];
+		Quantity++;
+	}
+}
+
 void Group::SetGroup(string name)
 {
 	Name = name;
+}
+
+void Group::SetStudent(Student s[])
+{
 	for (int i = 0; i < 30; i++) {
-		student[i].SetStudent("", "", "");
+		student[i] = s[i];
+		Quantity++;
 	}
-	Quantity = 0;
 }
 
 void Group::InputGroup()
@@ -72,8 +115,8 @@ void Group::OutputGroup()
 	cout << "Название группы: " << Name << endl;
 	cout << "Студенты группы: " << endl;
 	int i = 0;
-	while (student[i].GetSurname() != "" && student[i].GetSurname() != "" && student[i].GetPatronymic() != "") {
-		cout << i + 1 << ". " << student[i].GetSurname() << " " << student[i].GetSurname() << " " << student[i].GetPatronymic() << endl;
+	while (student[i].GetSurname() != "" && student[i].GetName() != "" && student[i].GetPatronymic() != "") {
+		cout << i + 1 << ". " << student[i].GetSurname() << " " << student[i].GetName() << " " << student[i].GetPatronymic() << endl;
 		i++;
 	}
 }
@@ -99,4 +142,18 @@ int Group::AverageMarkStudent()
 		cout << "Неправильно введён номер!" << endl;
 
 	return AverageMark;
+}
+
+Group& Group::operator=(const Group& group)
+{
+	if (this == &group)
+		return *this;
+	Name = group.Name;
+	Quantity = group.Quantity;
+	if (group.student)
+	{
+		for (int i = 0; i < group.Quantity; i++)
+			student[i] = group.student[i];
+	}
+	return *this;
 }

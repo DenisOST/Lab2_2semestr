@@ -4,17 +4,21 @@
 
 class Discipline {
 	string Name = "";
-	Teacher teacher;
+	Teacher* teacher;
 
 public:
 	Discipline();
+	Discipline(string name);
+	Discipline(string name, Teacher t);
 
 	~Discipline();
 
 	string GetName();
 	Teacher GetTeacher();
 
-	void Set(string name);
+	void Set(string name, Teacher t);
+	void SetName(string name);
+	void SetTeacher(Teacher t);
 
 	void InputDiscipline(Teacher Teacher);
 

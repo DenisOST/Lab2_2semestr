@@ -10,6 +10,7 @@ class Mark {
 	Mark* next; // На следующий элемент списка
 public:
 	Mark();
+	Mark(int M);
 
 	~Mark();
 
