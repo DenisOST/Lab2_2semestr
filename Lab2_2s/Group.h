@@ -3,18 +3,34 @@
 #include "Teacher.h"
 #include "Student.h"
 
-struct Group {
+class Group {
 	string Name = "";
-	Student Student[30];
+	Student* student = new Student[30];
 	int Quantity;
+
+public:
+	Group();
+	Group(string name);
+	Group(string name, Student s[], int q);
+	Group(const Group& group);
+
+	~Group();
+
+	string GetName();
+	Student GetStudent(int Num);
+	int GetQuantity();
+
+	void Set(string name, Student s[], int q);
+	void SetGroup(string name);
+	void SetStudent(Student s[]);
+
+	void InputGroup();
+
+	int AddStudentToGroup(Student Student);
+
+	void OutputGroup();
+
+	int AverageMarkStudent();
+
+	Group& operator=(const Group& Class);
 };
-
-Group SetGroup(string Name);
-
-Group InputGroup();
-
-int AddStudentToGroup(Group& Group, Student& Student);
-
-void OutputGroup(Group Group);
-
-int AverageMarkStudent(Group& Group);
