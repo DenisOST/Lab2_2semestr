@@ -96,6 +96,9 @@ int main()
 		}
 	}
 
+	cout << ("Лабораторная работа №9") << endl;
+	cout << ("2) Продемонстрировать вызов всех конструкторов. Для C++ дополнительно вызов всех конструкторов статическими и динамическими объектами;") << endl;
+
 	Teacher Teacher1;
 	Teacher Teacher2("Паровозов");
 	Teacher Teacher3("Лапенко", "Сергей", "Васильевич");
@@ -190,7 +193,16 @@ int main()
 	GroupUk3->OutputGroup();
 	cout << "\n\n" << endl;
 
-	cout << ("Продемонстрировать различие между мелким и глубоким копированием:") << endl;
+	cout << ("3) Инициализировать небольшой массив конструктором с одним параметром;") << endl;
+	Teacher teacherArr[3];
+	for (int j = 0; j < 3; j++)
+		teacherArr[j] = Teacher("Иванов" + to_string(j + 1));
+	cout << ("Инициализировать небольшой массив конструктором с одним параметром:") << endl;
+	for (int j = 0; j < 3; j++)
+		teacherArr[j].OutputTeacher();
+	cout << ("\n\n") << endl;
+
+	cout << ("4) Для С++ создать конструктор копии и перегрузку оператора присваивания. Продемонстрировать различие между мелким и глубоким копированием:") << endl;
 	Student MasStudForCopy[2];
 	MasStudForCopy[0] = Student(Students[0]);
 	MasStudForCopy[1] = Student(Students[1]);

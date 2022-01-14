@@ -7,6 +7,7 @@ Group::Group()
 		student[i].SetStudent("", "", "");
 	}
 }
+
 Group::Group(string name)
 {
 	Name = name;
