@@ -7,7 +7,9 @@ Mark::Mark()
 
 Mark::Mark(int M)
 {
-	Number = M;
+	Number = 0;
+	if (IsRightMark(M))
+		Number = M;
 }
 
 Mark::~Mark()
@@ -32,14 +34,32 @@ void Mark::GetMarkPointer(int* number)
 
 void Mark::Set(int M)
 {
-	Number = M;
+	Number = 0;
+	if (IsRightMark(M))
+		Number = M;
 }
 
 void Mark::InputMark()
 {
-	this->Set(0);
+	string mark;
 	cout << "Введите балл: ";
-	cin >> Number;
+	cin >> mark;
+
+	try // ищем исключения внутри этого блока и отправляем их в соответствующий обработчик catch
+	{
+		for (int i = 0; i < mark.length(); i++)
+		{
+			if ((mark[i] < '0') || (mark[i] > '9'))
+				throw "It string is not number!"; // выбрасывается исключение типа const char*
+		}
+		Set(stoi(mark));
+	}
+	catch (const char* exception) // обработчик исключений типа const char*
+	{
+		std::cerr << "Error: " << exception << '\n';
+	}
+	cout << endl;
+
 }
 
 void Mark::OutputMark()
@@ -110,4 +130,21 @@ Mark Mark::operator++ (int)
 	Mark temp = *this;
 	++(*this);
 	return temp;
+}
+
+bool Mark::IsRightMark(int mark)
+{
+	bool res = true;
+	try // ищем исключения внутри этого блока и отправляем их в соответствующий обработчик catch
+	{
+		if (mark < 0 || mark > 100) // Если пользователь ввел неверное число, то выбрасывается исключение
+			throw "Incorrect value."; // выбрасывается исключение типа const char*
+	}
+	catch (const char* exception) // обработчик исключений типа const char*
+	{
+		std::cerr << "Error: " << exception << '\n';
+		res = false;
+		return res;
+	}
+	return res;
 }

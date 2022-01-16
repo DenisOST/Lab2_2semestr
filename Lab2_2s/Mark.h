@@ -32,4 +32,5 @@ public:
 	friend Mark operator+(const Mark &mark, int number);
 	Mark& operator++();
 	Mark operator++ (int);
+	bool IsRightMark(int mark);
 };

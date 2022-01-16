@@ -33,6 +33,17 @@ int main()
 
 	int i;
 
+	Mark mark1;
+	cout << "Лабораторная работа №10\n" << endl;
+	cout << "Введите балл - число в пределах от 1 до 100!\n" << endl;
+	while (mark1.Get() == 0)
+	{
+		mark1.InputMark();
+	}
+	cout << "Введенная оценка: " << mark1.Get() << endl;
+	cout << endl;
+
+	/*
 	Teacher Teachers[3];
 	Teachers[0].Set("Попова", "Ирина", "Андреевна");
 	Teachers[1].Set("Иванова", "Елена", "Сергеевна");
