@@ -33,6 +33,77 @@ int main()
 
 	int i;
 
+	Teacher TeacherFor8;
+	TeacherFor8.InputFIO();
+
+	/*
+	cout << "4) Продемонстрировать в конструкторе производного класса с параметрами вызов конструктора базового класса" << endl;
+	Teacher TeacherFor4("Иванова", "Марина", "Витальевна");
+	TeacherFor4.OutputTeacher();
+	cout << endl;
+
+	cout << "5) Выполнить перегрузку оператора присваивания объекту производного класса объектов базового класса" << endl;
+	Person PersonFor5("Попова", "Ирина", "Андреевна");
+	Teacher TeacherFor5("Буянов", "Виталий", "Юрьевич");
+
+	PersonFor5.OutputPerson();
+	TeacherFor5.OutputTeacher();
+
+	cout << endl;
+	TeacherFor5 = PersonFor5;
+
+	PersonFor5.OutputPerson();
+	TeacherFor5.OutputTeacher();
+	cout << endl;
+
+	cout << "6) Заменить методы Display используя операции << для C++" << endl;
+	Teacher TeacherFor6("Андреев", "Сергей", "Васильевич");
+	
+	cout << TeacherFor6 << endl;
+	cout << endl;
+
+	cout << "7) Придумать разумное использование виртуальных функций и создать их в вашем проекте. Вызов виртуальной функции продемонстрировать через ее вызов не виртуальной функцией базового класса и через динамические объекты базового и производного классов после присваивания указателя. Продемонстрировать изменение работы программы, если функция не виртуальная (С++)." << endl;
+	Person PersonFor7("Иванова", "Марина", "Витальевна");
+	Teacher TeacherFor7("Попова", "Ирина", "Андреевна");
+
+	PersonFor7.OutputPerson();
+	TeacherFor7.OutputTeacher();
+	cout << endl;
+	PersonFor7.SayHello();
+	TeacherFor7.SayHello();
+
+	Person* PersoneFor7Uk1 = &TeacherFor7;
+	Teacher* TeacherFor7Uk = &TeacherFor7;
+	Person* PersoneFor7Uk2 = &PersonFor7;
+
+	cout << "Объект класса Учитель" << endl;
+	TeacherFor7.OutputTeacher();
+	cout << endl;
+	cout << "Указатель класса Персона на класс Учитель" << endl;
+	PersoneFor7Uk1->OutputPerson();
+	cout << endl;
+	cout << "Указатель класса Персона на класс Учитель" << endl;
+	PersoneFor7Uk2->OutputPerson();
+	cout << endl;
+	cout << "Вызов виртуальной функции через не виртуальную базового класса" << endl;
+	cout << "от объекта класса Учитель" << endl;
+	TeacherFor7.SayHello();
+	cout << endl;
+	cout << "Вызов виртуальной функции через не виртуальную базового класса" << endl;
+	cout << "от объекта класса Персона" << endl;
+	PersonFor7.SayHello();
+	cout << endl;
+	cout << "от указателя Персона на объект класса Учитель" << endl;
+	cout << PersoneFor7Uk1->WhoIs() << endl;
+	cout << endl;
+	cout << "от указателя Персона на объект класса Персона" << endl;
+	cout << PersoneFor7Uk2->WhoIs() << endl;
+	cout << endl;
+	cout << "от указателя Учитель на объект класса Учитель" << endl;
+	cout << TeacherFor7Uk->WhoIs() << endl;
+	*/
+
+	/*
 	Mark MarkFor11_1[5], MarkFor11_2[2][2];
 
 	MarkFor11_1[0] = 10;
@@ -119,7 +190,6 @@ int main()
 		}
 	}
 
-	/*
 	cout << ("Лабораторная работа №9") << endl;
 	cout << ("2) Продемонстрировать вызов всех конструкторов. Для C++ дополнительно вызов всех конструкторов статическими и динамическими объектами;") << endl;
 

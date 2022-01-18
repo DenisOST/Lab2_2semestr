@@ -14,6 +14,7 @@ Student::Student()
 	}
 }
 
+/*
 Student::Student(string surname)
 {
 	Surname = surname;
@@ -26,6 +27,7 @@ Student::Student(string surname)
 		discipline[i].SetName("");
 	}
 }
+*/
 
 Student::Student(string surname, string name, string patronymic, Mark m[], int M, Discipline d[], int D)
 {
@@ -45,6 +47,7 @@ Student::~Student()
 
 }
 
+/*
 string Student::GetSurname()
 {
 	return Surname;
@@ -59,6 +62,7 @@ string Student::GetPatronymic()
 {
 	return Patronymic;
 }
+*/
 
 Mark Student::GetMark(int Num)
 {
@@ -93,6 +97,7 @@ void Student::SetStudent(string surname, string name, string patronymic)
 	}
 }
 
+/*
 void Student::SetSurname(string surname)
 {
 	Surname = surname;
@@ -107,6 +112,7 @@ void Student::SetPatronymic(string patronymic)
 {
 	Patronymic = patronymic;
 }
+*/
 
 void Student::SetMark(Mark m[])
 {
@@ -123,8 +129,9 @@ void Student::SetDiscipline(Discipline d[])
 }
 
 
-void Student::InputStudent()
+void Student::InputFIO()
 {
+	/*
 	this->SetStudent("", "", "");
 	cout << "Введите фамилию студента: ";
 	cin >> Surname;
@@ -132,6 +139,10 @@ void Student::InputStudent()
 	cin >> Name;
 	cout << "Введите отчество студента: ";
 	cin >> Patronymic;
+	*/
+	cout << "Введите данные о студенте:" << endl;
+	Person::InputFIO();
+
 }
 
 int Student::AddDisciplineToStudent(Discipline Discipline)
@@ -185,4 +196,18 @@ void Student::OutputStudent()
 		i++;
 	}
 	cout << endl;
+}
+
+Student& Student::operator=(Person& person)
+{
+	this->Surname = person.GetSurname();
+	this->Name = person.GetName();
+	this->Patronymic = person.GetPatronymic();
+
+	return *this;
+}
+
+string Student::WhoIs()
+{
+	return "Студент";
 }
