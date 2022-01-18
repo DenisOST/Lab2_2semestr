@@ -1,40 +1,79 @@
 #include "Discipline.h"
 
-Discipline Set(string Name)
+Discipline::Discipline()
 {
-	Discipline Discipline;
-	Discipline.Name = Name;
-	Teacher Teacher;
-	Teacher = Set("", "", "");
-	Discipline.Teacher = Teacher;
-
-	return Discipline;
+	Name = "";
+	teacher = new Teacher();
+	teacher->Set("", "", "");
 }
 
-Discipline InputDiscipline(Teacher Teach)
+Discipline::Discipline(string name)
 {
-	Discipline Discipline;
-	Discipline = Set("");
+	Name = name;
+	teacher = new Teacher();
+	teacher->Set("", "", "");
+}
+
+Discipline::Discipline(string name, Teacher t)
+{
+	Name = name;
+	teacher = new Teacher();
+	*teacher = t;
+}
+
+Discipline::~Discipline()
+{
+
+}
+
+string Discipline::GetName()
+{
+	return Name;
+}
+
+Teacher Discipline::GetTeacher()
+{
+	return *teacher;
+}
+
+void Discipline::Set(string name, Teacher t)
+{
+	Name = name;
+	*teacher = t;
+}
+
+void Discipline::SetName(string name)
+{
+	Name = name;
+}
+
+void Discipline::SetTeacher(Teacher t)
+{
+	*teacher = t;
+}
+
+void Discipline::InputDiscipline(Teacher Teacher)
+{
+	this->SetName("");
 	cout << "Введите название дисциплины: ";
-	cin >> Discipline.Name;
-	Discipline.Teacher = Teach;
-
-	return Discipline;
+	cin >> Name;
+	*teacher = Teacher;
 }
 
-int AddTeacherToDiscipline(Teacher& Teacher, Discipline& Discipline)
+bool Discipline::AddTeacherToDiscipline(Teacher Teacher)
 {
-	int flag = 0;
+	bool flag = 0;
 
-	if (Discipline.Teacher.Surname == "") {
-		Discipline.Teacher = Teacher;
+	if (teacher->GetSurname() == "") {
+		*teacher = Teacher;
+		flag = 1;
 	}
 
 	return flag;
 }
 
-void OutputDiscipline(Discipline Discipline)
+void Discipline::OutputDiscipline()
 {
-	cout << "Название дисциплины: " << Discipline.Name << endl;
-	OutputTeacher(Discipline.Teacher);
+	cout << "Название дисциплины: " << Name << endl;
+	teacher->OutputTeacher();
 }

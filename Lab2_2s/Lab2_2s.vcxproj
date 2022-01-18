@@ -143,6 +143,7 @@
     <ClCompile Include="Lab2_2s.cpp" />
     <ClCompile Include="Mark.cpp" />
     <ClCompile Include="Discipline.cpp" />
+    <ClCompile Include="Person.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
@@ -150,8 +151,12 @@
     <ClInclude Include="Discipline.h" />
     <ClInclude Include="Group.h" />
     <ClInclude Include="Mark.h" />
+    <ClInclude Include="Person.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Teacher.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
